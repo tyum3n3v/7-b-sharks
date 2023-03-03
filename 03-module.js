@@ -5,6 +5,14 @@ function Product(name, price, quantity, description) {
   this.description = description;
 }
 
+/**
+ * 
+ * @param {*} object 
+ * @param {*} objectProperty 
+ * @param {*} key 
+ * @param {*} value 
+ * @returns true if object[objectProperty] [key] [value], else: false
+ */
 function verificationFilter(object, objectProperty, key, value) {
   let result = false;
 
@@ -35,6 +43,12 @@ function verificationFilter(object, objectProperty, key, value) {
   return result;
 }
 
+/**
+ * 
+ * @param {Array} array of products
+ * @param {String} key for verification object in array of products
+ * @returns {Array} new array for verificated obj in income array
+ */
 function verification(array, key) {
   let result = [];
 
@@ -59,6 +73,16 @@ function verification(array, key) {
 
   return result;
 }
+let verificationKey = "name-contains-fd&price-<=2&quantity->5&description-ends-abc";
+let verificationTest = [];
+let tempProduct1 = new Product("fd LAW", 2, 6, "arbitrary abc");
+let tempProduct2 = new Product("fd EX", 2, 6, "arbitrary sdf");
+let tempProduct3 = new Product("fd product", 2, 7, "arbitrary abc");
+let tempProduct4 = new Product("fd EX", 3, 5, "arbitrary sdf");
 
-// export {Product, verification, verificationFilter};
+verificationTest.push(tempProduct1, tempProduct2, tempProduct3, tempProduct4);
+
+console.log(verification(verificationTest, verificationKey));
+
+export {Product, verification};
 
